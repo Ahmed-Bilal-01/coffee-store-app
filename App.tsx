@@ -5,7 +5,7 @@ import { PersistGate } from 'redux-persist/integration/react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { store, persistor } from './src/redux/store'
 import RootStack from "./src/routes/RootStack";
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, DarkTheme  } from '@react-navigation/native';
 import  SplashScreen from 'react-native-splash-screen';
 
 const App = () => {
@@ -20,7 +20,7 @@ const App = () => {
       <SafeAreaView style={styles.container}>
         <Provider store={store}>
           <PersistGate loading={null} persistor={persistor}>
-            <NavigationContainer>
+            <NavigationContainer theme={DarkTheme}>
               <RootStack />
             </NavigationContainer>
           </PersistGate>
