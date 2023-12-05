@@ -1,57 +1,57 @@
 import React from "react";
 import { View, TouchableOpacity, Text, StyleSheet, Image } from 'react-native';
 import constants from "../../constants/Constants";
-import {useNavigation} from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../../redux/actions";
 
 const BeansDetailsCard = (props) => {
-    const navigation= useNavigation();
+    const navigation = useNavigation();
     const dispatch = useDispatch();
     const cartData = useSelector((state) => state.cart);
     const storeData = () => {
         const existingCartItem = cartData.items.find(item => item.id === props.data.id);
-    
+
         if (existingCartItem) {
-          const updatedItems = cartData.items.map(item => {
-            if (item.id === props.data.id) {
-              return {
-                ...item,
-                smallSizeQuantity: 1 + item.smallSizeQuantity,
-              };
-            }
-            return item;
-          });
-          dispatch({
-            type: 'UPDATE_CART',
-            payload: updatedItems,
-          });
+            const updatedItems = cartData.items.map(item => {
+                if (item.id === props.data.id) {
+                    return {
+                        ...item,
+                        smallSizeQuantity: 1 + item.smallSizeQuantity,
+                    };
+                }
+                return item;
+            });
+            dispatch({
+                type: 'UPDATE_CART',
+                payload: updatedItems,
+            });
         } else {
-          dispatch(
-            addToCart({
-              id: props.data.id,
-              image: props.data.image,
-              heading: props.data.name,
-              description: props.data.characteristics,
-              qualityText: props.data.qualityText,
-              smallSizePrice: props.data.smallPrice,
-              mediumSizePrice: props.data.mediumPrice,
-              largeSizePrice: props.data.largePrice,
-              smallSizeLabel: 'S',
-              mediumSizeLabel: 'M',
-              largeSizeLabel: 'L',
-              smallSizeQuantity: 1,
-              mediumSizeQuantity: 0,
-              largeSizeQuantity: 0,
-            })
-          );
+            dispatch(
+                addToCart({
+                    id: props.data.id,
+                    image: props.data.image,
+                    heading: props.data.name,
+                    description: props.data.characteristics,
+                    qualityText: props.data.qualityText,
+                    smallSizePrice: props.data.smallPrice,
+                    mediumSizePrice: props.data.mediumPrice,
+                    largeSizePrice: props.data.largePrice,
+                    smallSizeLabel: 'S',
+                    mediumSizeLabel: 'M',
+                    largeSizeLabel: 'L',
+                    smallSizeQuantity: 1,
+                    mediumSizeQuantity: 0,
+                    largeSizeQuantity: 0,
+                })
+            );
         }
-      };
+    };
     return (
         <View style={styles.cardContainer}>
-            <TouchableOpacity onPress={()=>navigation.navigate('BeansDetailsScreen',{data:props.data})} >
+            <TouchableOpacity onPress={() => navigation.navigate('BeansDetailsScreen', { data: props.data })} >
                 <View style={styles.image}>
-                <Image source={{uri:props.data.image}} style={{height:130, width:130}} />
+                    <Image source={{ uri: props.data.image }} style={{ height: 130, width: 130 }} />
                     <View style={styles.ratingContainer}>
                         <constants.svg.star />
                         <Text style={styles.ratingText}>{props.data.rating}</Text>
@@ -78,13 +78,13 @@ const styles = StyleSheet.create({
         width: 150,
         borderRadius: 25,
         overflow: 'hidden',
-        paddingBottom: 22,
+        paddingBottom: 55,
         marginRight: 15,
     },
     image: {
         alignSelf: 'center',
         marginTop: 10,
-        borderRadius: 32,
+        borderRadius: 16,
         overflow: 'hidden',
     },
     ratingContainer: {
@@ -96,28 +96,34 @@ const styles = StyleSheet.create({
         borderBottomLeftRadius: 27,
         flexDirection: 'row',
         alignItems: 'center',
-        paddingHorizontal: 10
+        paddingLeft: 15
     },
     ratingText: {
         color: constants.colors.white,
         fontSize: 11,
-        marginLeft: 3
+        marginLeft: 3,
+        fontFamily: 'Poppins-Regular',
     },
     categoryText: {
         color: constants.colors.white,
         marginHorizontal: 12,
         marginTop: 12,
-        fontSize: 16
+        fontSize: 14,
+        fontFamily: 'Poppins-Regular',
+        minHeight: 45,
     },
     characteristicsText: {
         color: constants.colors.white,
         marginHorizontal: 12,
-        marginTop: 8,
-        fontSize: 11
+        fontSize: 11,
+        fontFamily: 'Poppins-Regular',
     },
     priceContainer: {
         flexDirection: 'row',
         alignItems: 'center',
+        position: 'absolute',
+        bottom: 18,
+        width: '100%'
     },
     dollarSign: {
         color: constants.colors.lightPeach,
@@ -132,7 +138,8 @@ const styles = StyleSheet.create({
         fontWeight: '700',
         marginHorizontal: 8,
         marginTop: 12,
-        width: 60
+        width: 60,
+        fontFamily: 'Poppins-Regular',
     },
     plusButton: {
         backgroundColor: constants.colors.lightPeach,

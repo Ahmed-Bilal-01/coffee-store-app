@@ -50,13 +50,15 @@ const styles = StyleSheet.create({
         fontSize: 28,
         fontWeight: '700',
         width: '60%',
-        marginLeft: '5%'
+        marginLeft: '5%',
+        fontFamily  : 'Poppins-Regular',
     },
     beansText: {
         color: constants.colors.white,
         fontSize: 16,
         fontWeight: '600',
-        marginTop: 15
+        marginTop: 15,
+        fontFamily  : 'Poppins-Regular',
     },
     bottomTab: {
         position: 'absolute',

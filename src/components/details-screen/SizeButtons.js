@@ -23,10 +23,12 @@ const styles = StyleSheet.create({
         borderColor: constants.colors.lightPeach
      },
      labelText: {
-        color: constants.colors.lightGray
+        color: constants.colors.lightGray,
+        fontFamily  : 'Poppins-Regular',
     },
     selectedLabelText:{
-        color: constants.colors.lightPeach
+        color: constants.colors.lightPeach,
+        fontFamily  : 'Poppins-Regular',
     }
 })
 export default SizeButtons;

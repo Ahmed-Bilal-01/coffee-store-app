@@ -14,7 +14,7 @@ const FavouritesScreen = () => {
     return (
         <View style={styles.mainContainer}>
             <Header label={'Favorites'} />
-            <ScrollView style={styles.scrollContainer}>
+            <ScrollView contentContainerStyle={styles.scrollContainer}>
                 {favoritesData && favoritesData.map((data, index) => (
                     <FavouritesCard
                         key={index}  
@@ -42,7 +42,7 @@ const FavouritesScreen = () => {
 const styles = StyleSheet.create({
     scrollContainer: {
         backgroundColor: constants.colors.background,
-        height: '100%'
+        paddingBottom:80
     },
     mainContainer: {
         backgroundColor: constants.colors.background,

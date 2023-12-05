@@ -97,11 +97,13 @@ const styles = StyleSheet.create({
   headingText: {
     color: constants.colors.white,
     fontSize: 15,
-    fontWeight: '600'
+    fontWeight: '600',
+    fontFamily  : 'Poppins-Regular',
   },
   descriptionText: {
     color: constants.colors.lightGray,
-    fontSize: 12
+    fontSize: 12,
+    fontFamily  : 'Poppins-Regular',
   },
   buttonsContainer: {
     flexDirection: 'row',

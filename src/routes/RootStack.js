@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import { createStackNavigator, CardStyleInterpolators } from '@react-navigation/stack';
 import CofeeDetailsScreen from '../screens/CoffeeDetailsScreen';
 import BeansDetailsScreen from '../screens/BeanDetailsScreen';
@@ -7,11 +7,12 @@ import HomeScreen from '../screens/HomeScreen';
 import CartScreen from '../screens/CartScreen';
 import FavouritesScreen from '../screens/FavouritesScreen';
 import OrderHistoryScreen from '../screens/OrderHistoryScreen';
-import constants from '../constants/Constants';
+import { useNavigation, useRoute } from "@react-navigation/native";
+
 
 const Stack = createStackNavigator();
-
 const RootStack = () => {
+
   return (
     <Stack.Navigator
     initialRouteName="HomeScreen"

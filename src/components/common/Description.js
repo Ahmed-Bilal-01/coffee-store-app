@@ -14,12 +14,15 @@ const styles = StyleSheet.create({
     descriptionHeading: {
         color: constants.colors.lightGray,
         fontSize: 15,
-        fontWeight: '700'
+        fontWeight: '700',
+        fontFamily  : 'Poppins-Regular',
     },
     descriptionText: {
         color: constants.colors.white,
         fontSize: 12,
-        marginTop: '2%'
+        marginTop: '2%',
+        fontFamily  : 'Poppins-Regular',
+        lineHeight:20
     }
 })
 export default Description;

@@ -6,10 +6,10 @@ import DollarPrice from "../common/DollarPrice";
 import OrderedItemCounter from "../common/OrderedItemCounter";
 
 const SingleOrderedSizeCard = (props) => {
-    const [selectedSizeLabel, setSelectedSizeLabel]= useState();
+    const [selectedSizeLabel, setSelectedSizeLabel]= useState('');
     const [selectedSizeQuantity, setSelectedSizeQuantity]= useState(0);
-    const [selectedQuantityName, setSelectedQuantityName]= useState();
-    const [totalPrice, setTotalPrice]= useState();
+    const [selectedQuantityName, setSelectedQuantityName]= useState('');
+    const [price, setPrice]= useState(0);
     const handleOrderUpdate = (quantity) => {
         // const totalPrice = quantity * props.data.prices;
         // props.price(totalPrice)
@@ -20,19 +20,18 @@ const SingleOrderedSizeCard = (props) => {
             setSelectedSizeLabel(props.data.smallSizeLabel)
             setSelectedSizeQuantity(props.data.smallSizeQuantity)
             setSelectedQuantityName('smallSizeQuantity')
-            setTotalPrice(parseFloat(props.data.smallSizeQuantity*props.data.smallSizePrice).toFixed(2))
+            setPrice(parseFloat(props.data.smallSizePrice).toFixed(2))
         }
         else if(props.data.smallSizeQuantity === 0 && props.data.mediumSizeQuantity > 0 && props.data.largeSizeQuantity === 0){
             setSelectedSizeLabel(props.data.mediumSizeLabel)
             setSelectedSizeQuantity(props.data.mediumSizeQuantity)
             setSelectedQuantityName('mediumSizeQuantity')
-            setTotalPrice(parseFloat(props.data.mediumSizeQuantity*props.data.mediumSizePrice).toFixed(2))
+            setPrice(parseFloat(props.data.mediumSizePrice).toFixed(2))
         } else{
             setSelectedSizeLabel(props.data.largeSizeLabel)
             setSelectedSizeQuantity(props.data.largeSizeQuantity)
             setSelectedQuantityName('largeSizeQuantity')
-            setTotalPrice(parseFloat(props.data.largeSizeQuantity*props.data.largeSizePrice).toFixed(2))
-
+            setPrice(parseFloat(props.data.largeSizePrice).toFixed(2))
         }
     },[props])
     return (
@@ -44,7 +43,7 @@ const SingleOrderedSizeCard = (props) => {
                     <Text style={styles.descriptionText}>{props.data.description}</Text>
                     <View style={styles.buttonsContainer}>
                         <SizeButtons label={selectedSizeLabel} customStyle={{ width: 80 }} />
-                        <DollarPrice price={totalPrice} />
+                        <DollarPrice price={price} />
                     </View>
     
                     <OrderedItemCounter
@@ -95,11 +94,13 @@ const styles = StyleSheet.create({
     headingText: {
         color: constants.colors.white,
         fontSize: 15,
-        fontWeight: '600'
+        fontWeight: '600',
+        fontFamily  : 'Poppins-Regular',
     },
     descriptionText: {
         color: constants.colors.lightGray,
-        fontSize: 12
+        fontSize: 12,
+        fontFamily  : 'Poppins-Regular',
     },
     buttonsContainer: {
         flexDirection: 'row',

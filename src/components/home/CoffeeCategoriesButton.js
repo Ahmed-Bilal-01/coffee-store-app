@@ -27,6 +27,7 @@ const styles = StyleSheet.create({
     color: constants.colors.gray,
     fontSize: 15,
     fontWeight: '700',
+    fontFamily  : 'Poppins-Regular',
   },
   activeCircle: {
     height: 8,

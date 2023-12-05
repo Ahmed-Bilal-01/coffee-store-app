@@ -72,7 +72,6 @@ const CartScreen = () => {
         <View style={styles.mainContainer}>
             <Header label={'Cart'} />
             <ScrollView style={styles.scrollContainer}>
-                {/* Check if cartData is an array before using map */}
                 {cartData && cartData?.items.map((item) => renderOrderedSizeCard(item))}
             </ScrollView>
             <Footer

@@ -1,19 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { View, StyleSheet, TouchableOpacity } from "react-native";
 import constants from "../constants/Constants";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 import { useDispatch, useSelector } from 'react-redux';
 import { changeSelectedScreen } from "../redux/actions";
 import BottomTabButtons from "../components/bottom-tab/BottomTabButtons";
 
 const BottomTab = () => {
   const navigation = useNavigation();
+  const route= useRoute();
   const dispatch = useDispatch();
   const selectedScreen = useSelector((state) => state.tab.selectedScreen);
 
   const handlePress = (screenName) => {
     if (selectedScreen !== screenName) {
-      dispatch(changeSelectedScreen(screenName));
       navigation.navigate(screenName);
     }
   };

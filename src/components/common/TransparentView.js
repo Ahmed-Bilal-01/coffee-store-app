@@ -49,11 +49,13 @@ const styles = StyleSheet.create({
         color: constants.colors.white,
         fontSize: 20,
         fontWeight: '600',
-        width:150
+        width:150,
+        fontFamily  : 'Poppins-Regular',
     },
     descriptionText: {
         color: constants.colors.lightGray,
-        fontSize: 12
+        fontSize: 12,
+        fontFamily  : 'Poppins-Regular',
     },
     buttonsContainer: {
         flexDirection: 'row',
@@ -76,14 +78,16 @@ const styles = StyleSheet.create({
     ratingText: {
         fontSize: 17,
         color: constants.colors.white,
-        fontWeight: '600',
-        marginLeft: 5
+        fontWeight: '700',
+        marginLeft: 5,
+        fontFamily  : 'Poppins-Regular',
     },
     totalRatingsText: {
         color: constants.colors.lightGray,
         fontSize: 10,
         fontWeight: '700',
-        marginLeft: 6
+        marginLeft: 6,
+        fontFamily  : 'Poppins-Regular',
     }
 });
 export default TransparentView;

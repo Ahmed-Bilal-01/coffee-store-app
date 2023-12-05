@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, TouchableOpacity, Text, StyleSheet } from 'react-native';
+import { View, TouchableOpacity, Text, StyleSheet, TextInput } from 'react-native';
 import constants from '../../constants/Constants';
 import { useDispatch, useSelector } from "react-redux";
 
@@ -10,16 +10,13 @@ const OrderedItemCounter = (props) => {
   const handleDecrement = () => {
     setOrderCounter(orderCounter - 1);
     const existingCartItem = cartData.items.find(item => item.id === props.id);
-
     if (existingCartItem) {
       const sizeName = props.selectedSizeName;
       const updatedItem = {
         ...existingCartItem,
         [sizeName]: existingCartItem[sizeName] - 1,
       };
-
       const totalQuantity = updatedItem['smallSizeQuantity'] + updatedItem['mediumSizeQuantity'] + updatedItem['largeSizeQuantity'];
-
       if (totalQuantity === 0) {
         dispatch({
           type: 'REMOVE_FROM_CART',
@@ -37,24 +34,39 @@ const OrderedItemCounter = (props) => {
   const handleIncrement = () => {
     setOrderCounter(orderCounter + 1);
     const existingCartItem = cartData.items.find(item => item.id === props.id);
-
     if (existingCartItem) {
       const sizeName = props.selectedSizeName;
       const updatedItem = {
         ...existingCartItem,
         [sizeName]: existingCartItem[sizeName] + 1,
       };
-
       dispatch({
         type: 'UPDATE_CART',
         payload: [updatedItem],
       });
     }
   };
-
   useEffect(() => {
     setOrderCounter(props.selectedQuantity)
-  }, [props.selectedQuantity])
+  }, [props.selectedQuantity]);
+
+  const handleInputChange = (text) => {
+    const numericValue = text.replace(/[^0-9]/g, '');
+    const updatedValue = numericValue === '' || numericValue === '0' ? '1' : numericValue;
+    setOrderCounter(updatedValue);
+    const existingCartItem = cartData.items.find((item) => item.id === props.id);
+    if (existingCartItem) {
+      const sizeName = props.selectedSizeName;
+      const updatedItem = {
+        ...existingCartItem,
+        [sizeName]: updatedValue,
+      };
+      dispatch({
+        type: 'UPDATE_CART',
+        payload: [updatedItem],
+      });
+    }
+  };
 
   return (
     <View style={[props.customStyle, { justifyContent: 'space-between' }]}>
@@ -65,11 +77,12 @@ const OrderedItemCounter = (props) => {
         <TouchableOpacity onPress={handleDecrement} style={styles.button}>
           <Text style={{ color: 'white', fontSize: 20, fontWeight: '700' }}>-</Text>
         </TouchableOpacity>
-        <View style={styles.orderQuantityText}>
-          <Text style={{ color: 'white', fontSize: 15, fontWeight: '700' }}>
-            {orderCounter}
-          </Text>
-        </View>
+        <TextInput
+          style={styles.orderQuantityText}
+          value={orderCounter.toString()}
+          onChangeText={handleInputChange}
+          keyboardType="numeric" // Set the keyboard type to numeric
+        />
         <TouchableOpacity onPress={handleIncrement} style={styles.button}>
           <Text style={{ color: 'white', fontSize: 15, fontWeight: '700' }}>+</Text>
         </TouchableOpacity>
@@ -87,15 +100,16 @@ const styles = StyleSheet.create({
     borderRadius: 8
   },
   orderQuantityText: {
-    width: 50,
-    height: 34,
-    alignItems: 'center',
-    justifyContent: 'center',
+    width: 57,
+    paddingVertical: 0,
     marginHorizontal: 12,
     backgroundColor: constants.colors.darkGray,
     borderRadius: 8,
     borderWidth: 1,
-    borderColor: constants.colors.lightPeach
+    borderColor: constants.colors.lightPeach,
+    fontFamily: 'Poppins-Regular',
+    color: constants.colors.white,
+    textAlign:'center',
   }
 })
 

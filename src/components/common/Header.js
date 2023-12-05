@@ -35,7 +35,8 @@ const styles = StyleSheet.create({
   labelText:{
    color: constants.colors.white,
    fontSize:18,
-   fontWeight:'700'
+   fontWeight:'700',
+   fontFamily  : 'Poppins-Regular',
   }
 });
 

@@ -54,24 +54,28 @@ const styles = StyleSheet.create({
     AddCartText:{
       color: constants.colors.white,
       fontSize:16,
-      fontWeight:'600'
+      fontWeight:'600',
+      fontFamily  : 'Poppins-Regular',
     },
     priceHeading:{
         color: constants.colors.lightGray, 
         fontSize:14, 
-        fontWeight:'400'
+        fontWeight:'400',
+        fontFamily  : 'Poppins-Regular',
     },
     dollarText:{
         color:constants.colors.lightPeach, 
         fontSize:18, 
-        fontWeight:'700'
+        fontWeight:'700',
+        fontFamily  : 'Poppins-Regular',
     },
     amountText:{
         color:constants.colors.white, 
         fontSize:18, 
         fontWeight:'700', 
         marginLeft:5,
-        maxWidth:50
+        maxWidth:50,
+        fontFamily  : 'Poppins-Regular',
     },
     bottomBar:{
         height:4, 

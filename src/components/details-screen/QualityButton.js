@@ -22,7 +22,8 @@ const styles = StyleSheet.create({
     },
     labelText:{
     color:constants.colors.lightGray,
-    fontSize:11
+    fontSize:11,
+    fontFamily  : 'Poppins-Regular',
     }
   });
 export default QualityButton;
